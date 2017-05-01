@@ -1,0 +1,32 @@
+/*#bg{
+
+  background-repeat: no-repeat;
+  background-position: top;
+  background-attachment: fixed;
+}*/
+
+.jumbotron{
+  /*background: #4CA1AF;
+  background: -webkit-linear-gradient(to top, #C4E0E5, #4CA1AF);
+  background: linear-gradient(to top, #C4E0E5, #4CA1AF); */
+  /*font-family: 'Satisfy', cursive;
+  font-family: 'Courgette', cursive;
+  font-family: 'Tangerine', cursive;*/
+}
+h1, h2, h3, .navbar-brand, .navbar-link{
+
+}
+
+.naturiere{
+  color: #20AA20;
+  font-size: 1.5em;
+}
+body{
+background: #5E74AD;
+background: -webkit-linear-gradient(to right, #BDCAF6, #5E74AD);
+background: linear-gradient(to right, #BDCAF6, #5E74AD);
+font-family: 'Courgette', cursive;
+}
+li{
+    display:inline;
+}

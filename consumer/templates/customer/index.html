@@ -1,0 +1,9 @@
+{% extends "customer/base.html" %}
+{% load staticfiles %}
+  {% block body_block%}
+    <div class="jumbotron" style="background-image: url('{% static 'images/jumbocrop1.jpg'%}')"; >
+        <h1>Welcome to Naturiere</h1>
+        <h2>Where Beauty meets Nature</h2>
+        <h3><a class="navbar-link" href="{% url 'customer' %}">Sign Up for our Newsletter and Savings</a></h3>
+    </div>
+  {% endblock %}
