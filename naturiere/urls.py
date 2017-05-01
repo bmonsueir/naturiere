@@ -14,18 +14,20 @@ Including another URLconf
     2. Import the include() function: from django.conf.urls import url, include
     3. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
-from django.conf.urls import url, include
+from django.conf.urls import url, include, patterns
 from django.contrib import admin
 # from analyze import urls
 # from blog import urls
-from consumer import urls
+from customer import views
 # from products import urls
 
 urlpatterns = [
+    url(r'^$',views.index, name ='index'),
     # url(r'^admin/', admin.site.urls),
-    # url(r'^analyze/', include('analyze.views')),
-    # url(r'^blog/', include('blog.views')),
-    url(r'^consumer/', include('consumer.views')),
-    # url(r'^products/', include('products.views')),
-    url(r'^$','index', name ='index')
+    # url(r'^analyze/', include('analyze.urls')),
+    # url(r'^blog/', include('blog.urls')),
+    url(r'^customer/', include('customer.urls')),
+    # url(r'^products/', include('products.urls')),
+    url(r'^admin/', admin.site.urls),
+  
 ]

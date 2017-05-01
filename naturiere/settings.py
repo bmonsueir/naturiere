@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
-    'consumer',
+    'customer',
     'products',
     'analyze',
     'survey',
@@ -129,5 +129,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     STATIC_DIR,
-    TEMPLATE_CUSTOMER
+    TEMPLATE_CUSTOMER,
+    TEMPLATE_DIR,
 ]

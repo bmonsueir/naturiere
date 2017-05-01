@@ -9,18 +9,18 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static "css/naturiere.css" %}" />
   </head>
-<!-- <body id="bg" style="background-image: url('{% static 'images/back1.jpg'%}')";> -->
+
 <body>
     <nav class="navbar navbar-default navbar-static-top">
       <div class="container">
         <ul class="nav navbar-nav">
-          <li><a class="navbar-brand" href="{% url 'index' %}"><span class = "naturiere">Naturiere</span></li>
-          <li><a class="navbar-link" href="{% url 'index' %}">Our Story</a></li>
-          <li><a class="navbar-link" href="{% url 'customer' %}">Sign Up</a></li>
-          <li><a class="navbar-link" href="{% url 'customer' %}">Products</a></li>
-          <li><a class="navbar-link" href="{% url 'customer' %}">Account</a></li>
-          <li><a class="navbar-link" href="{% url 'admin:index' %}">Admin</a></li>
-          <li><a class="navbar-link" href="{% url 'customer' %}">Sign Out</a></li>
+          <li><a class="navbar-brand" href="#"><span class = "naturiere">Naturiere</span></li>
+          <li><a class="navbar-link" href="#">Our Story</a></li>
+          <li><a class="navbar-link" href="#">Sign Up</a></li>
+          <li><a class="navbar-link" href="#">Products</a></li>
+          <li><a class="navbar-link" href="#">Account</a></li>
+          <li><a class="navbar-link" href="#">Admin</a></li>
+          <li><a class="navbar-link" href="#">Sign Out</a></li>
 
         </ul>
       </div>
@@ -30,7 +30,9 @@
 
     <div class="container">
     {% block body_block %}
-    {# Anything outside of this will be inherited if you use extend.#}
+  
+  
+  
     {% endblock %}
     </div>
 
