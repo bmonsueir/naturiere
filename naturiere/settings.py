@@ -16,6 +16,10 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR = os.path.join(BASE_DIR,'templates')
 TEMPLATE_CUSTOMER = os.path.join(BASE_DIR,'customer/templates')
+TEMPLATE_BLOG = os.path.join(BASE_DIR,'blog/templates')
+TEMPLATE_PRODUCTS = os.path.join(BASE_DIR,'products/templates')
+TEMPLATE_SURVEY = os.path.join(BASE_DIR,'survey/templates')
+TEMPLATE_ANALYZE = os.path.join(BASE_DIR,'analyze/templates')
 STATIC_DIR = os.path.join(BASE_DIR,"static")
 
 # Quick-start development settings - unsuitable for production
@@ -131,4 +135,9 @@ STATICFILES_DIRS = [
     STATIC_DIR,
     TEMPLATE_CUSTOMER,
     TEMPLATE_DIR,
+    TEMPLATE_BLOG,
+    TEMPLATE_PRODUCTS,
+    TEMPLATE_SURVEY,
+    TEMPLATE_ANALYZE,
+    
 ]

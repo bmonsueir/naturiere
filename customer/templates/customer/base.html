@@ -14,15 +14,40 @@
     <nav class="navbar navbar-default navbar-static-top">
       <div class="container">
         <ul class="nav navbar-nav">
-          <li><a class="navbar-brand" href="#"><span class = "naturiere">Naturiere</span></li>
-          <li><a class="navbar-link" href="#">Our Story</a></li>
-          <li><a class="navbar-link" href="#">Sign Up</a></li>
+          <li><a class="navbar-brand" href="{% url 'index' %}"><span class = "naturiere">Naturiere</span></li>
+          <li><a class="navbar-link" href="{% url 'about' %}">Our Story</a></li>
+          
           <li><a class="navbar-link" href="#">Products</a></li>
-          <li><a class="navbar-link" href="#">Account</a></li>
-          <li><a class="navbar-link" href="#">Admin</a></li>
-          <li><a class="navbar-link" href="#">Sign Out</a></li>
+        
+          <li><a class="navbar-link" href="{% url 'admin:index' %}">Admin</a></li>
+        
 
         </ul>
+        
+        <ul class="nav navbar-nav navbar-right">
+        {% if user.is_authenticated %}
+        <li>
+          <a href="{% url 'blog:post_new' %}" >New Post</a>
+        </li>
+
+        <li>
+          <a href="{% url 'blog:post_draft_list' %}">Drafts</a>
+        </li>
+          <li><a class="navbar-link" href="#">Account</a></li>
+        <li>
+          <a href="{% url 'logout' %}" >Log out</a>
+        </li>
+
+        <li>
+          <a >Welcome: {{ user.username }}</a>
+        </li>
+          {% else %}
+          <li><a class="navbar-link" href="{% url 'sign_up' %}">Sign Up</a></li>
+          <li><a class='nav navbar-right' href="{% url 'login' %}" ><span class="glyphicon glyphicon-user"></span></a></li>
+        {% endif %}
+
+      </ul>
+        
       </div>
     </nav>
 

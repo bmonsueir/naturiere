@@ -17,17 +17,20 @@ Including another URLconf
 from django.conf.urls import url, include, patterns
 from django.contrib import admin
 # from analyze import urls
-# from blog import urls
+from blog import urls
 from customer import views
 # from products import urls
 
 urlpatterns = [
     url(r'^$',views.index, name ='index'),
+    url(r'^about/',views.about, name ='about'),
+    url(r'^sign_up/',views.sign_up, name ='sign_up'),
     # url(r'^admin/', admin.site.urls),
     # url(r'^analyze/', include('analyze.urls')),
-    # url(r'^blog/', include('blog.urls')),
+    url(r'^blog/', include('blog.urls')),
     url(r'^customer/', include('customer.urls')),
     # url(r'^products/', include('products.urls')),
     url(r'^admin/', admin.site.urls),
-  
+    url(r'^accounts/login/$', views.login, name='login'),
+    url(r'^accounts/logout/$', views.logout, name='logout', kwargs={'next_page': '/'}),
 ]
