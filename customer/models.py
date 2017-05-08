@@ -7,7 +7,7 @@ from django.core.urlresolvers import reverse
 class Customer(models.Model):
     first_name = models.CharField(max_length=128)
     last_name = models.CharField(max_length=128)
-    user_name = models.CharField(max_length = 128)
+    user_name = models.CharField(max_length = 128,unique=True)
     email = models.EmailField(max_length=254,unique=True)
     
     def __str__(self):

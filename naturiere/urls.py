@@ -27,10 +27,10 @@ urlpatterns = [
     url(r'^sign_up/',views.sign_up, name ='sign_up'),
     # url(r'^admin/', admin.site.urls),
     # url(r'^analyze/', include('analyze.urls')),
-    url(r'^blog/', include('blog.urls')),
+    url(r'^forum/', include('blog.urls')),
     url(r'^customer/', include('customer.urls')),
     # url(r'^products/', include('products.urls')),
     url(r'^admin/', admin.site.urls),
-    url(r'^accounts/login/$', views.login, name='login'),
-    url(r'^accounts/logout/$', views.logout, name='logout', kwargs={'next_page': '/'}),
+    url(r'^login_view/$', views.login_view, name='login_view'),
+    url(r'^logout_view/$', views.logout_view, name='logout_view'),
 ]

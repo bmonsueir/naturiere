@@ -1,0 +1,59 @@
+{% extends "blog/base.html" %}
+{% load staticfiles %}
+{% block body_block %}
+    <div class="jumbotron" style="background-image: url('{% static 'images/jumbocrop1.jpg'%}')"; >
+        <h1>Welcome to Naturiere's Forum</h1>
+        <h2>Please Share</h2>
+       
+    </div>
+    
+   {% if all_posts %}
+   <div class = "container posts">
+
+            {% for post in all_posts %}
+            <div class="panel panel-primary">
+               
+                <div class="panel-heading">
+                    <h3> {{ post.title }} </h3>
+                </div>
+                 <div class="panel-body">
+                    {{ post.text }}
+                </div>
+                <div class = "panel-footer">
+                   by {{ post.author }} on {{ post.created_date }} 
+                </div>
+                
+                                    
+             </div>
+            {% endfor %}
+
+   </div>
+    
+    {% else %}
+        <h1>No Posts</h1>
+    {% endif %}
+
+<div class="row">
+    <div class="col-sm-12 col-md-7">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3>Add a New Post</h3>
+                {% if error_message %}
+                    <p><strong>{{ error_message }}</strong></p>
+                {% endif %}
+                <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% include 'blog/post_new.html' %}
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+{% endblock %}

@@ -93,3 +93,15 @@ def comment_remove(request, pk):
     post_pk = comment.post.pk
     comment.delete()
     return redirect('post_detail', pk=post_pk)
+    
+@login_required
+def forum(request):
+    all_posts = Post.objects.all()
+    form = PostForm(request.POST or None, request.FILES or None)
+    if form.is_valid():
+            post = form.save(commit=False)
+            post.save()
+    form = PostForm() 
+    context = {'form': form,
+        'all_posts': all_posts}
+    return render(request, 'blog/forum.html', context)
