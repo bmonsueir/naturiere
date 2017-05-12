@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from blog.models import Post, Comment
 from django.utils import timezone
 from blog.forms import PostForm, CommentForm
-
+from django.contrib.auth.models import User
 from django.views.generic import (TemplateView,ListView,
                                   DetailView,CreateView,
                                   UpdateView,DeleteView)
@@ -48,7 +48,7 @@ class DraftListView(LoginRequiredMixin,ListView):
     model = Post
 
     def get_queryset(self):
-        return Post.objects.filter(published_date__isnull=True).order_by('created_date')
+        return Post.objects.all()
 
 
 class PostDeleteView(LoginRequiredMixin,DeleteView):
@@ -73,8 +73,9 @@ def add_comment_to_post(request, pk):
         if form.is_valid():
             comment = form.save(commit=False)
             comment.post = post
+            comment.author = request.user
             comment.save()
-            return redirect('post_detail', pk=post.pk)
+            return redirect('forum')
     else:
         form = CommentForm()
     return render(request, 'blog/comment_form.html', {'form': form})
@@ -96,12 +97,27 @@ def comment_remove(request, pk):
     
 @login_required
 def forum(request):
+   
     all_posts = Post.objects.all()
-    form = PostForm(request.POST or None, request.FILES or None)
-    if form.is_valid():
-            post = form.save(commit=False)
-            post.save()
-    form = PostForm() 
-    context = {'form': form,
-        'all_posts': all_posts}
+    all_comments = Comment.objects.all()
+    comment_form = CommentForm(request.POST or None, request.FILES or None)
+    if comment_form.is_valid():
+        comment = comment_form.save(commit=False)
+        comment.save()
+    form = CommentForm()
+
+    context = {'form':form,
+       
+        'all_posts': all_posts,
+        'all_comment': all_comments
+    }
     return render(request, 'blog/forum.html', context)
+    
+@login_required
+def new_comment(request):
+    comment_form = CommentForm(request.POST or None, request.FILES or None)
+    if comment_form.is_valid():
+        comment = comment_form.save(commit=False)
+        comment.save()
+    form = CommentForm()
+    return render(request, 'blog/new_comment.html', {'form':form})

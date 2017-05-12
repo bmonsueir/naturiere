@@ -5,7 +5,7 @@ from . import views
 urlpatterns = [
     # url(r'^$',views.PostListView.as_view(),name='post_list'),
     url(r'^$',views.forum, name='forum'),
-    # url(r'^forum/', views.forum, name='forum'),
+    url(r'^new_comment/$', views.new_comment, name='new_comment'),
     url(r'^post/(?P<pk>\d+)$', views.PostDetailView.as_view(), name='post_detail'),
     url(r'^post/new/$', views.CreatePostView.as_view(), name='post_new'),
     url(r'^post/(?P<pk>\d+)/edit/$', views.PostUpdateView.as_view(), name='post_edit'),

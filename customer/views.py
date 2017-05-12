@@ -2,7 +2,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from .forms import UserForm
 from django.utils import timezone
-
+from blog.models import Post
+from .models import Article
 from django.contrib.auth import authenticate, login, logout
 from django.views.generic import (TemplateView,ListView,
                                   DetailView,CreateView,
@@ -14,7 +15,12 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 
 def index(request):
-    return render(request,'customer/index.html')
+    post = Post.objects.latest('created_date')
+    all_articles = Article.objects.all()
+    context = {"post":post,
+                "all_articles": all_articles
+    }
+    return render(request,'customer/index.html', context)
 
 def customer(request):
     return render(request, 'customer/customer.htnl')

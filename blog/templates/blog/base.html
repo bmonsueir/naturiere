@@ -6,6 +6,7 @@
     <title>Naturiere</title>
     <link rel="icon" type="image/png" href="{% static "images/N3.png" %}" />
     <!-- Latest compiled and minified CSS -->
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
     <link href="https://fonts.googleapis.com/css?family=Courgette|Satisfy|Tangerine" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
@@ -28,13 +29,9 @@
 
       <ul class="nav navbar-nav navbar-right">
         {% if user.is_authenticated %}
-        <li>
-          <a href="{% url 'post_new' %}" >New Post</a>
-        </li>
+     
 
-        <li>
-          <a href="{% url 'post_draft_list' %}">Drafts</a>
-        </li>
+      
         <li>
           <a href="{% url 'logout_view' %}" >Log out</a>
         </li>

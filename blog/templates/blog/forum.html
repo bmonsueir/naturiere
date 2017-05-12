@@ -1,14 +1,24 @@
 {% extends "blog/base.html" %}
 {% load staticfiles %}
 {% block body_block %}
-    <div class="jumbotron" style="background-image: url('{% static 'images/jumbocrop1.jpg'%}')"; >
+  
         <h1>Welcome to Naturiere's Forum</h1>
         <h2>Please Share</h2>
-       
-    </div>
+
+    
+
     
    {% if all_posts %}
    <div class = "container posts">
+        <div class="panel panel-primary">
+           <div class="input-group">
+              
+              <input type="text" class="form-control" placeholder="Search for...">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button">Search!</button>
+              </span>
+            </div>
+            </div>
 
             {% for post in all_posts %}
             <div class="panel panel-primary">
@@ -22,10 +32,38 @@
                 <div class = "panel-footer">
                    by {{ post.author }} on {{ post.created_date }} 
                 </div>
+                </div>
                 
-                                    
+                 <div class="panel panel-info col-md-offset-1 ">
+                    <div class="panel-heading"><h4>Comments on {{ post.title }}</h4></div>
+                    <div class="panel-body">
+                     <ul class="list-group">
+                        {% for comment in post.comments.all %}
+                  
+                         <li class="list-group-item">{{ comment.text|safe|linebreaks }} </li>  
+                         
+                         <div class = "panel-footer">
+                      
+                      
+                            by {{ comment.author }} on {{ comment.created_date }}  <a href="{% url 'add_comment_to_post' post.id %}" >Add Comment</a>
+                      
+                          </div>  
+                         
+                        {% endfor %}   
+                        
+                        
+                   </div>
+                
+                 
+                    
              </div>
+                               
+                       
+                   
             {% endfor %}
+            
+            
+
 
    </div>
     
@@ -33,27 +71,10 @@
         <h1>No Posts</h1>
     {% endif %}
 
-<div class="row">
-    <div class="col-sm-12 col-md-7">
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <h3>Add a New Post</h3>
-                {% if error_message %}
-                    <p><strong>{{ error_message }}</strong></p>
-                {% endif %}
-                <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {% include 'blog/post_new.html' %}
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-success">Submit</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+
+  
+      
+
 
     
 {% endblock %}

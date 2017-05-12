@@ -16,3 +16,12 @@ class Customer(models.Model):
     def get_absolute_url(self):
         return reverse("customer:customer",kwargs={'pk':self.pk})
 
+class Article(models.Model):
+    title = models.CharField(max_length=128)
+    text = models.TextField()
+    link = models.URLField(max_length=200, null = 'True', blank = 'True')
+    
+    def __str__(self):
+        return self.title
+        
+        
