@@ -1,0 +1,15 @@
+{% extends "products/base.html" %}
+{% load staticfiles %}
+{% block body_block %}
+  
+    <h1>{{ product.name }}</h1>
+
+    <img src= "{% static  product.image %}"  class="product"/> 
+    <p> {{ product.description }}</p>
+     <p>{{ product.price}}</p>  
+     <p><a href="{{ product.amz }}" class = "btn btn-danger"> Buy Here </a> </p>
+              
+
+
+            
+{% endblock %}

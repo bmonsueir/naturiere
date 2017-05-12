@@ -19,7 +19,7 @@ from django.contrib import admin
 # from analyze import urls
 from blog import urls
 from customer import views
-# from products import urls
+from products import urls
 
 urlpatterns = [
     url(r'^$',views.index, name ='index'),
@@ -29,7 +29,7 @@ urlpatterns = [
     # url(r'^analyze/', include('analyze.urls')),
     url(r'^forum/', include('blog.urls')),
     url(r'^customer/', include('customer.urls')),
-    # url(r'^products/', include('products.urls')),
+    url(r'^products/', include('products.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^login_view/$', views.login_view, name='login_view'),
     url(r'^logout_view/$', views.logout_view, name='logout_view'),
