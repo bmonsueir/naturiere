@@ -44,7 +44,9 @@ def login_view(request):
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
-            return render(request,'customer/index.html')
+            # return render(request,'customer/index.html')
+            return redirect('index')
+
           
         else:
             return render(request, 'customer/sign_up.html', {'error_message': 'Your account has been disabled'})
